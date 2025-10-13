@@ -1,9 +1,20 @@
-import React from 'react'
-import Taskform from './assets/components/Taskform'
-import Tasklist from './assets/components/Tasklist'
-import Progresstrack from './assets/components/Progresstrack'
+
+import Taskform from './components/Taskform'
+import Tasklist from './components/Tasklist'
+import Progresstrack from './components/Progresstrack'
+import { useEffect, useState } from 'react'
 
 export default function App() {
+
+  const [tasks, settasks] = useState([]);
+
+  useEffect(()=>{
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  })
+
+  const addTask = (task) => {
+    settasks(task);
+  }
   return (
     <div>
       <h1>Task Master</h1>
