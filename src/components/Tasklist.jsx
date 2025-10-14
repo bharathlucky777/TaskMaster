@@ -9,9 +9,8 @@ export default function Tasklist({ tasks, toggleTask, deleteTask }) {
           <li key={index} style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
             <span>{task.text}</span>
             <span style={{ color: task.priority === 'High' ? 'red' : task.priority === 'Medium' ? 'orange' : 'green' }}>
-              {task.priority}
+              ({task.priority}, {task.category})
             </span>
-            <span>{task.category}</span>
             <button onClick={() => toggleTask(index)}>
               {task.completed ? 'Mark Incomplete' : 'Complete'}
             </button>
