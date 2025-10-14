@@ -8,9 +8,11 @@ export default function Tasklist({ tasks, toggleTask, deleteTask }) {
         {tasks.map((task, index) => (
           <li key={index} style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
             <span>{task.text}</span>
+            <span style={{ color: 'black' }}>(</span>
             <span style={{ color: task.priority === 'High' ? 'red' : task.priority === 'Medium' ? 'orange' : 'green' }}>
-              ({task.priority}, {task.category})
+              {task.priority}
             </span>
+            <span style={{ color: 'black' }}>, {task.category})</span>
             <button onClick={() => toggleTask(index)}>
               {task.completed ? 'Mark Incomplete' : 'Complete'}
             </button>
