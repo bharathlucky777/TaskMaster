@@ -6,13 +6,13 @@ export default function ProgressTracker({ tasks }) {
   const progress = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
 
   return (
-    <div>
-      <h2>Progress Tracker</h2>
-      <p>Completed: {completedTasks} / {totalTasks}</p>
-      <div style={{ width: '100%', height: '20px', backgroundColor: '#f0f0f0', borderRadius: '10px' }}>
-        <div style={{ width: `${progress}%`, height: '100%', backgroundColor: '#4caf50', borderRadius: '10px' }}></div>
+    <div className="progress-tracker">
+      <h2 className="progress-title">Progress Tracker</h2>
+      <p className="progress-text">Completed: {completedTasks} / {totalTasks}</p>
+      <div className="progress-bar">
+        <div className="progress-fill" style={{ width: `${progress}%` }}></div>
       </div>
-      <p>{Math.round(progress)}% Complete</p>
+      <p className="progress-percentage">{Math.round(progress)}% Complete</p>
     </div>
   )
 }

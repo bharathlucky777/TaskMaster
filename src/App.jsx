@@ -3,6 +3,7 @@ import Taskform from './components/Taskform'
 import Tasklist from './components/Tasklist'
 import ProgressTracker from './components/ProgressTracker'
 import { useState, useEffect } from 'react'
+import './styles.css'
 
 export default function App() {
   const [tasks, setTasks] = useState(() => {
@@ -34,12 +35,12 @@ export default function App() {
   };
 
   return (
-    <div>
-      <h1>Your Friendly Task Manager</h1>
+    <div className="app-container">
+      <h1 className="app-title">Your Friendly Task Manager</h1>
       <Taskform addTask={addTask} />
       <Tasklist tasks={tasks} toggleTask={toggleTask} deleteTask={deleteTask} />
       <ProgressTracker tasks={tasks} />
-      <button onClick={clearAllTasks}>Clear All Tasks</button>
+      {tasks.length > 0 && <button className="clear-all-btn" onClick={clearAllTasks}>Clear All Tasks</button>}
     </div>
   )
 }

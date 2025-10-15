@@ -2,25 +2,27 @@ import React from 'react'
 
 export default function Tasklist({ tasks, toggleTask, deleteTask }) {
   return (
-    <div>
-      <h2>Task List Component</h2>
+    <div className="task-list">
+      <h2 className="task-list-title">Task List</h2>
       <ul>
         {tasks.map((task, index) => (
-          <li key={index} style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
-            <span>{task.text}</span>
-            <span style={{ color: 'black' }}>(</span>
-            <span style={{ color: task.priority === 'High' ? 'red' : task.priority === 'Medium' ? 'orange' : 'green' }}>
-              {task.priority}
-            </span>
-            <span style={{ color: 'black' }}>, {task.category})</span>
-            <button onClick={() => toggleTask(index)}>
-              {task.completed ? 'Mark Incomplete' : 'Complete'}
-            </button>
-            <button onClick={() => deleteTask(index)}>Delete</button>
+          <li key={index} className={`task-item ${task.completed ? 'task-completed' : ''}`}>
+            <span className="task-text">{task.text}</span>
+            <span className="task-details">(
+              <span className={`priority-${task.priority.toLowerCase()}`}>
+                {task.priority}
+              </span>
+              , {task.category})</span>
+            <div className="task-btns">
+              <button className="toggle-btn" onClick={() => toggleTask(index)}>
+                {task.completed ? 'Mark Incomplete' : 'Complete'}
+              </button>
+              <button className="delete-btn" onClick={() => deleteTask(index)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>
-      {tasks.length === 0 && <p>No tasks added yet.</p>}
+      {tasks.length === 0 && <p className="no-tasks">No tasks added yet.</p>}
     </div>
   )
 }

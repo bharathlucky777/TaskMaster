@@ -16,32 +16,31 @@ export default function Taskform({addTask}) {
     }
   }
   return (
-      <form onSubmit={handleSubmit} id="task-form">
-        <div id="inp">
-          <input 
-            type='text' 
+      <form onSubmit={handleSubmit} className="task-form">
+        <div className="input-group">
+          <input
+            type='text'
             placeholder='Enter the task'
             value={task}
-            onChange={(e)=> setTask(e.target.value)} 
+            onChange={(e)=> setTask(e.target.value)}
+            className="task-input"
           />
-          <span><button type="submit">Add Task</button></span>
-          {/* <h1>{task}</h1> */}
+          <button type="submit" className="add-btn">Add Task</button>
         </div>
 
-        <div id="btns">
-          <select value={priority} onChange={(e)=> setPriority(e.target.value)}>
+        <div className="select-group">
+          <select value={priority} onChange={(e)=> setPriority(e.target.value)} className="priority-select">
             <option value="High">High</option>
             <option value="Medium">Medium</option>
             <option value="Low">Low</option>
           </select>
 
-          <select value={category} onChange={(e)=>setCategory(e.target.value)}>
+          <select value={category} onChange={(e)=>setCategory(e.target.value)} className="category-select">
             <option value="General">General</option>
             <option value="Work">Work</option>
             <option value="Personal">Personal</option>
           </select>
         </div>
-        {/* <h1>{task} {priority} {category}</h1> */}
       </form>
   )
 }
